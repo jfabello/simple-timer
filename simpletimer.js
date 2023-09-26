@@ -67,7 +67,7 @@ class SimpleTimer {
 	}
 
 	/**
-	 * @description The timer state of simple timer instance.
+	 * @description The timer state of a simple timer instance.
 	 */
 	get state() {
 		return this.#timerState;
