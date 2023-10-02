@@ -18,7 +18,7 @@
 		"url": "https://github.com/jfabello/simple-timer.git"
 	},
 	"scripts": {
-		"test": "jest --watch --coverage"
+		"test": "jest --watchAll --coverage"
 	},
 	"devDependencies": {
 		"jest": "^29.0",
