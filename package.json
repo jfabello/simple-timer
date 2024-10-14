@@ -1,7 +1,7 @@
 {
 	"name": "@jfabello/simple-timer",
 	"version": "1.0.0",
-	"description": "Promise-based simple timer.",
+	"description": "Promise-based simple timer for Node.js.",
 	"keywords": [
 		"simple",
 		"timer",
