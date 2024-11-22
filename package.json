@@ -1,0 +1,30 @@
+{
+	"name": "@jfabello/simple-timer",
+	"version": "1.0.1",
+	"description": "Promise-based simple timer for Node.js.",
+	"keywords": [
+		"simple",
+		"timer",
+		"promises"
+	],
+	"license": "MIT",
+	"author": {
+		"name": "Juan F. Abello",
+		"email": "juan@jfabello.com"
+	},
+	"main": "src/simple-timer.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jfabello/simple-timer.git"
+	},
+	"scripts": {
+		"test": "jest --watchAll --coverage"
+	},
+	"devDependencies": {
+		"@jest/globals": "^29.0",
+		"jest": "^29.0"
+	},
+	"engines": {
+		"node": ">=18"
+	}
+}
