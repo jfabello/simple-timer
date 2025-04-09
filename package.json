@@ -12,7 +12,7 @@
 		"name": "Juan F. Abello",
 		"email": "juan@jfabello.com"
 	},
-	"main": "src/simple-timer.js",
+	"main": "src/simple-timer-class.js",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/jfabello/simple-timer.git"
