@@ -86,7 +86,7 @@ class SimpleTimer {
 
 	/**
 	 * @description Creates a new instance of the simple timer.
-	 @ @constructor
+	 * @constructor
 	 * @param {number} timeout - The timeout duration in milliseconds. Must be an integer greater than 0.
 	 * @throws {SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID} If the timeout is not an integer.
 	 * @throws {SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_OUT_OF_BOUNDS} If the timeout is less than 1.
