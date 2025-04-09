@@ -21,6 +21,10 @@ This module provides a simple, promise-based timer for Node.js. It allows the cr
 
 ## What is New
 
+### Version 2.0.1
+
+- Fixed a bug in `package.json` where the `main` field was pointing to the wrong file.
+
 ### Version 2.0.0
 
 - The `SimpleTimer` class is now exported as a named export.
