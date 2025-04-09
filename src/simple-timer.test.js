@@ -9,13 +9,14 @@
 "use strict";
 
 // Module imports
-const { expect, test } = require("@jest/globals");
+const { describe, expect, test } = require("@jest/globals");
 const SimpleTimer = require("./simple-timer.js");
 
 describe("Simple Timer tests", () => {
 	test("An attempt to create a SimpleTimer instance should throw an ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID error when the timeout argument is undefined", () => {
 		expect.assertions(1);
 		try {
+			// @ts-ignore
 			let simpleTimerInstance = new SimpleTimer();
 		} catch (error) {
 			expect(error).toBeInstanceOf(SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID);
@@ -25,16 +26,19 @@ describe("Simple Timer tests", () => {
 	test("An attempt to create a SimpleTimer instance should throw an ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID error when the timeout argument is not an integer", () => {
 		expect.assertions(4);
 		try {
+			// @ts-ignore
 			let simpleTimerInstance = new SimpleTimer("200");
 		} catch (error) {
 			expect(error).toBeInstanceOf(SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID);
 		}
 		try {
+			// @ts-ignore
 			let simpleTimerInstance = new SimpleTimer([200]);
 		} catch (error) {
 			expect(error).toBeInstanceOf(SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID);
 		}
 		try {
+			// @ts-ignore
 			let simpleTimerInstance = new SimpleTimer({ timeout: 200 });
 		} catch (error) {
 			expect(error).toBeInstanceOf(SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID);

@@ -12,7 +12,7 @@
 const { EventEmitter } = require("node:events");
 
 // Errors
-const simpleTimerErrors = require("./errors.js");
+const errors = require("./errors.js");
 
 /**
  * @description A simple timer class that provides a way to set, start, and cancel a timer with a specified timeout.
@@ -73,7 +73,7 @@ class SimpleTimer {
 	 * @description Read-only property that contains the simple timer error classes as its properties.
 	 */
 	static get errors() {
-		return simpleTimerErrors;
+		return errors;
 	}
 
 	/**
@@ -93,10 +93,10 @@ class SimpleTimer {
 	 */
 	constructor(timeout) {
 		if (Number.isInteger(timeout) !== true) {
-			throw new SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID();
+			throw new errors.ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID();
 		}
 		if (timeout < 1) {
-			throw new SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_OUT_OF_BOUNDS();
+			throw new errors.ERROR_SIMPLE_TIMER_TIMEOUT_OUT_OF_BOUNDS();
 		}
 
 		this.#timerTimeout = timeout;
@@ -115,7 +115,7 @@ class SimpleTimer {
 		}
 
 		if (this.#timerState !== SimpleTimer.#SET) {
-			throw new SimpleTimer.errors.ERROR_SIMPLE_TIMER_NOT_IN_SET_OR_RUNNING_STATES();
+			throw new errors.ERROR_SIMPLE_TIMER_NOT_IN_SET_OR_RUNNING_STATES();
 		}
 
 		this.#timerPromise = new Promise((resolve, reject) => {
@@ -146,7 +146,7 @@ class SimpleTimer {
 	 */
 	cancel() {
 		if (this.#timerState !== SimpleTimer.#RUNNING) {
-			throw new SimpleTimer.errors.ERROR_SIMPLE_TIMER_NOT_RUNNING();
+			throw new errors.ERROR_SIMPLE_TIMER_NOT_RUNNING();
 		}
 
 		clearTimeout(this.#timerHandle);
