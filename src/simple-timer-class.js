@@ -1,6 +1,6 @@
 /**
- * @module jfabello/simple-timer
- * @description Promise-based simple timer for Node.js.
+ * Promise-based simple timer for Node.js.
+ * @module jfabello/simple-timer-class
  * @license MIT
  * @author Juan F. Abello <juan@jfabello.com>
  */
@@ -15,7 +15,8 @@ const { EventEmitter } = require("node:events");
 const errors = require("./simple-timer-errors.js");
 
 /**
- * @description A simple timer class that provides a way to set, start, and cancel a timer with a specified timeout.
+ * A simple timer class that provides a way to set, start, and cancel a timer with a specified timeout.
+ * @class SimpleTimer
  */
 class SimpleTimer {
 	// Private class constants
@@ -25,71 +26,71 @@ class SimpleTimer {
 	static #CANCELLED = Symbol("CANCELLED");
 
 	// Private instance variables
-	#timerTimeout = null;
-	#timerState = null;
-	#timerEmitter = null;
-	#timerPromise = null;
-	#timerHandle = null;
+	/** @type {number} */ #timerTimeout = null;
+	/** @type {symbol} */ #timerState = null;
+	/** @type {EventEmitter} */ #timerEmitter = null;
+	/** @type {Promise} */ #timerPromise = null;
+	/** @type {NodeJS.Timeout} */ #timerHandle = null;
 
 	/**
+	 * Read-only property representing the SET timer state.
 	 * @static
-	 * @type {Symbol}
-	 * @description Read-only property representing the SET timer state.
+	 * @type {symbol}
 	 */
 	static get SET() {
 		return SimpleTimer.#SET;
 	}
 
 	/**
+	 * Read-only property representing the RUNNING timer state.
 	 * @static
-	 * @type {Symbol}
-	 * @description Read-only property representing the RUNNING timer state.
+	 * @type {symbol}
 	 */
 	static get RUNNING() {
 		return SimpleTimer.#RUNNING;
 	}
 
 	/**
+	 * Read-only property representing the DONE timer state.
 	 * @static
-	 * @type {Symbol}
-	 * @description Read-only property representing the DONE timer state.
+	 * @type {symbol}
 	 */
 	static get DONE() {
 		return SimpleTimer.#DONE;
 	}
 
 	/**
+	 * Read-only property representing the CANCELLED timer state.
 	 * @static
-	 * @type {Symbol}
-	 * @description Read-only property representing the CANCELLED timer state.
+	 * @type {symbol}
 	 */
 	static get CANCELLED() {
 		return SimpleTimer.#CANCELLED;
 	}
 
 	/**
+	 * Read-only property that contains the simple timer error classes as its properties.
 	 * @static
-	 * @type {Object}
-	 * @description Read-only property that contains the simple timer error classes as its properties.
+	 * @type {object}
 	 */
 	static get errors() {
 		return errors;
 	}
 
 	/**
-	 * @type {Symbol}
-	 * @description The timer instance state.
+	 * The timer instance state.
+	 * @type {symbol}
 	 */
 	get state() {
 		return this.#timerState;
 	}
 
 	/**
-	 * @description Creates a new instance of the simple timer.
+	 * Creates a new instance of the simple timer.
 	 * @constructor
 	 * @param {number} timeout - The timeout duration in milliseconds. Must be an integer greater than 0.
-	 * @throws {SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID} If the timeout is not an integer.
-	 * @throws {SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_OUT_OF_BOUNDS} If the timeout is less than 1.
+	 * @throws {ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID} If the timeout is not an integer.
+	 * @throws {ERROR_SIMPLE_TIMER_TIMEOUT_OUT_OF_BOUNDS} If the timeout is less than 1.
 	 */
 	constructor(timeout) {
 		if (Number.isInteger(timeout) !== true) {
@@ -105,9 +106,9 @@ class SimpleTimer {
 	}
 
 	/**
-	 * @description Starts the timer if it is in the SET state. If the timer is already running, it returns the existing timer promise. If the timer is not in the SET or RUNNING states, it throws an error.
-	 * @returns {Promise} A promise that fulfills to SimpleTimer.DONE if the timer times out, or SimpleTimer.CANCELLED if the timer is cancelled before it times out.
-	 * @throws {SimpleTimer.errors.ERROR_SIMPLE_TIMER_NOT_IN_SET_OR_RUNNING_STATES} If the timer is not in the SET or RUNNING states.
+	 * Starts the timer if it is in the SET state. If the timer is already running, it returns the existing timer promise. If the timer is not in the SET or RUNNING states, it throws an error.
+	 * @returns {Promise<symbol>} A promise that fulfills to SimpleTimer.DONE if the timer times out, or SimpleTimer.CANCELLED if the timer is cancelled before it times out.
+	 * @throws {ERROR_SIMPLE_TIMER_NOT_IN_SET_OR_RUNNING_STATES} If the timer is not in the SET or RUNNING states.
 	 */
 	start() {
 		if (this.#timerState === SimpleTimer.#RUNNING) {
@@ -140,9 +141,9 @@ class SimpleTimer {
 	}
 
 	/**
-	 * @description Cancels the simple timer. If the timer is not in the RUNNING state, it throws an error.
-	 * @returns {Promise} A promise that fulfills to SimpleTimer.CANCELLED once the timer is cancelled.
-	 * @throws {SimpleTimer.errors.ERROR_SIMPLE_TIMER_NOT_RUNNING} If the timer is not running.
+	 * Cancels the simple timer. If the timer is not in the RUNNING state, it throws an error.
+	 * @returns {Promise<symbol>} A promise that fulfills to SimpleTimer.CANCELLED once the timer is cancelled.
+	 * @throws {ERROR_SIMPLE_TIMER_NOT_RUNNING} If the timer is not running.
 	 */
 	cancel() {
 		if (this.#timerState !== SimpleTimer.#RUNNING) {
