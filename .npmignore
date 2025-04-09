@@ -21,4 +21,6 @@ package-lock.json
 /coverage/
 
 # Ignore the test files
+/tests/
 *.test.js
+jest.config.js

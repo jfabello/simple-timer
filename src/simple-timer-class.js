@@ -12,7 +12,7 @@
 const { EventEmitter } = require("node:events");
 
 // Errors
-const errors = require("./errors.js");
+const errors = require("./simple-timer-errors.js");
 
 /**
  * @description A simple timer class that provides a way to set, start, and cancel a timer with a specified timeout.
