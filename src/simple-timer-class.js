@@ -156,4 +156,4 @@ class SimpleTimer {
 	}
 }
 
-module.exports = SimpleTimer;
+module.exports = { SimpleTimer };

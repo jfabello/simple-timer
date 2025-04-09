@@ -5,6 +5,7 @@
 This module provides a simple, promise-based timer for Node.js. It allows the creation of timers that can be awaited asynchronously, making it easier to manage timeouts and delays in your code. The `SimpleTimer` class supports starting and cancelling the timers, and also provides information about the timer's state.
 
 ## Table of Contents
+- [What is New](#what-is-new)
 - [Installation](#installation)
 - [Usage](#usage)
 	- [Starting a Timer](#starting-a-timer)
@@ -17,6 +18,19 @@ This module provides a simple, promise-based timer for Node.js. It allows the cr
 	- [Instance Methods](#instance-methods)
 - [Contributing](#contributing)
 - [License](#license)
+
+## What is New
+
+### Version 2.0.0
+
+- The `SimpleTimer` class is now exported as a named export.
+- Refactored and enhanced the JSDoc comments for better clarity and type checking.
+- Renamed and moved several files for a better project structure.
+- Bug fixes.
+
+### Version 1.0.1
+
+- Initial release.
 
 ## Installation
 
@@ -35,7 +49,7 @@ Here are some examples:
 ### Starting a Timer
 
 ```javascript
-const SimpleTimer = require('@jfabello/simple-timer');
+const { SimpleTimer } = require('@jfabello/simple-timer');
 
 async function someAsyncFunction() {
     // Creates a new SimpleTimer instance with a 2000 ms timeout
@@ -52,7 +66,7 @@ someAsyncFunction();
 ### Cancelling a Timer
 
 ```javascript
-const SimpleTimer = require('@jfabello/simple-timer');
+const { SimpleTimer } = require('@jfabello/simple-timer');
 
 async function someAsyncFunction() {
     // Creates a new SimpleTimer instance with a 2000 ms timeout
@@ -75,7 +89,7 @@ someAsyncFunction();
 ### Using Timer States
 
 ```javascript
-const SimpleTimer = require('@jfabello/simple-timer');
+const { SimpleTimer } = require('@jfabello/simple-timer');
 
 async function someAsyncFunction() {
 	// Creates a new SimpleTimer instance with a 2000 ms timeout
