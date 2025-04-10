@@ -35,6 +35,7 @@ class SimpleTimer {
 	/**
 	 * Read-only property representing the SET timer state.
 	 * @static
+	 * @readonly
 	 * @type {symbol}
 	 */
 	static get SET() {
@@ -44,6 +45,7 @@ class SimpleTimer {
 	/**
 	 * Read-only property representing the RUNNING timer state.
 	 * @static
+	 * @readonly
 	 * @type {symbol}
 	 */
 	static get RUNNING() {
@@ -53,6 +55,7 @@ class SimpleTimer {
 	/**
 	 * Read-only property representing the DONE timer state.
 	 * @static
+	 * @readonly
 	 * @type {symbol}
 	 */
 	static get DONE() {
@@ -62,6 +65,7 @@ class SimpleTimer {
 	/**
 	 * Read-only property representing the CANCELLED timer state.
 	 * @static
+	 * @readonly
 	 * @type {symbol}
 	 */
 	static get CANCELLED() {
@@ -71,6 +75,7 @@ class SimpleTimer {
 	/**
 	 * Read-only property that contains the simple timer error classes as its properties.
 	 * @static
+	 * @readonly
 	 * @type {object}
 	 */
 	static get errors() {
@@ -79,6 +84,7 @@ class SimpleTimer {
 
 	/**
 	 * The timer instance state.
+	 * @readonly
 	 * @type {symbol}
 	 */
 	get state() {
