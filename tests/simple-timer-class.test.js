@@ -13,7 +13,7 @@ const { describe, expect, test } = require("@jest/globals");
 const { SimpleTimer } = require("../src/simple-timer-class.js");
 
 describe("Simple Timer tests", () => {
-	test("An attempt to create a SimpleTimer instance should throw an ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID error when the timeout argument is undefined", () => {
+	test("An attempt to create a SimpleTimer instance must throw an ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID error when the timeout argument is undefined", () => {
 		expect.assertions(1);
 		try {
 			// @ts-ignore
@@ -23,7 +23,7 @@ describe("Simple Timer tests", () => {
 		}
 	});
 
-	test("An attempt to create a SimpleTimer instance should throw an ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID error when the timeout argument is not an integer", () => {
+	test("An attempt to create a SimpleTimer instance must throw an ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID error when the timeout argument is not an integer", () => {
 		expect.assertions(4);
 		try {
 			// @ts-ignore
@@ -50,7 +50,7 @@ describe("Simple Timer tests", () => {
 		}
 	});
 
-	test("An attempt to create a SimpleTimer instance should throw an ERROR_SIMPLE_TIMER_TIMEOUT_OUT_OF_BOUNDS error when the timeout argument is not a positive integer greater than zero", () => {
+	test("An attempt to create a SimpleTimer instance must throw an ERROR_SIMPLE_TIMER_TIMEOUT_OUT_OF_BOUNDS error when the timeout argument is not a positive integer greater than zero", () => {
 		expect.assertions(2);
 		try {
 			let simpleTimerInstance = new SimpleTimer(0);
@@ -64,33 +64,33 @@ describe("Simple Timer tests", () => {
 		}
 	});
 
-	test("An attempt to create a SimpleTimer instance should return a SimpleTimer instance when the timeout argument is a positive integer greater than zero", () => {
+	test("An attempt to create a SimpleTimer instance must return a SimpleTimer instance when the timeout argument is a positive integer greater than zero", () => {
 		expect.assertions(1);
 		let simpleTimerInstance = new SimpleTimer(200);
 		expect(simpleTimerInstance).toBeInstanceOf(SimpleTimer);
 	});
 
-	test("A SimpleTimer instance should be in the SET state after its constructor is called", () => {
+	test("A SimpleTimer instance must be in the SET state after its constructor is called", () => {
 		expect.assertions(1);
 		let simpleTimerInstance = new SimpleTimer(200);
 		expect(simpleTimerInstance.state).toBe(SimpleTimer.SET);
 	});
 
-	test("A SimpleTimer instance should return a Promise object when its start(...) method is called and it is in the SET state", () => {
+	test("A SimpleTimer instance must return a Promise object when its start(...) method is called and it is in the SET state", () => {
 		expect.assertions(2);
 		let simpleTimerInstance = new SimpleTimer(200);
 		expect(simpleTimerInstance.state).toBe(SimpleTimer.SET);
 		expect(simpleTimerInstance.start()).toBeInstanceOf(Promise);
 	});
 
-	test("A SimpleTimer instance should be in the RUNNING state after its start(...) method is called", () => {
+	test("A SimpleTimer instance must be in the RUNNING state after its start(...) method is called", () => {
 		expect.assertions(1);
 		let simpleTimerInstance = new SimpleTimer(200);
 		simpleTimerInstance.start();
 		expect(simpleTimerInstance.state).toBe(SimpleTimer.RUNNING);
 	});
 
-	test("A SimpleTimer instance should return a Promise object when its start(...) method is called and it is in the RUNNING state", async () => {
+	test("A SimpleTimer instance must return a Promise object when its start(...) method is called and it is in the RUNNING state", async () => {
 		expect.assertions(2);
 		let simpleTimerInstance = new SimpleTimer(200);
 		simpleTimerInstance.start();
@@ -99,7 +99,7 @@ describe("Simple Timer tests", () => {
 		expect(simpleTimerInstance.start()).toBeInstanceOf(Promise);
 	});
 
-	test("A SimpleTimer instance with a 200 ms timeout should take about 200 ms to time out when its start(...) method is called", async () => {
+	test("A SimpleTimer instance with a 200 ms timeout must take about 200 ms to time out when its start(...) method is called", async () => {
 		expect.assertions(1);
 		let simpleTimerInstance = new SimpleTimer(200);
 		let startTime = Date.now();
@@ -108,21 +108,21 @@ describe("Simple Timer tests", () => {
 		expect((endTime - startTime) / 1000).toBeCloseTo(0.2);
 	});
 
-	test("A SimpleTimer instance with a 200 ms timeout should have its promise resolve to SimpleTimer.DONE when it times out", async () => {
+	test("A SimpleTimer instance with a 200 ms timeout must have its promise resolve to SimpleTimer.DONE when it times out", async () => {
 		expect.assertions(1);
 		let simpleTimerInstance = new SimpleTimer(200);
 		let simpleTimerResult = await simpleTimerInstance.start();
 		expect(simpleTimerResult).toBe(SimpleTimer.DONE);
 	});
 
-	test("A SimpleTimer instance with a 200 ms timeout should be in the DONE state when it times out", async () => {
+	test("A SimpleTimer instance with a 200 ms timeout must be in the DONE state when it times out", async () => {
 		expect.assertions(1);
 		let simpleTimerInstance = new SimpleTimer(200);
 		await simpleTimerInstance.start();
 		expect(simpleTimerInstance.state).toBe(SimpleTimer.DONE);
 	});
 
-	test("A SimpleTimer instance call to its start(...) method should throw an ERROR_SIMPLE_TIMER_NOT_IN_SET_OR_RUNNING_STATES when it is in the DONE state", async () => {
+	test("A SimpleTimer instance call to its start(...) method must throw an ERROR_SIMPLE_TIMER_NOT_IN_SET_OR_RUNNING_STATES when it is in the DONE state", async () => {
 		expect.assertions(2);
 		let simpleTimerInstance = new SimpleTimer(200);
 		await simpleTimerInstance.start();
@@ -134,7 +134,7 @@ describe("Simple Timer tests", () => {
 		}
 	});
 
-	test("A SimpleTimer instance should take about 100 ms when its cancel(...) method is called 100 ms after its start(...) method is called and it is in the RUNNING state", async () => {
+	test("A SimpleTimer instance must take about 100 ms when its cancel(...) method is called 100 ms after its start(...) method is called and it is in the RUNNING state", async () => {
 		expect.assertions(2);
 		let simpleTimerInstance = new SimpleTimer(200);
 		let startTime = Date.now();
@@ -146,7 +146,7 @@ describe("Simple Timer tests", () => {
 		expect((endTime - startTime) / 1000).toBeCloseTo(0.1);
 	});
 
-	test("A SimpleTimer instance should have its promise resolve to SimpleTimer.CANCELLED when its cancel(...) method is called and it is in the RUNNING state", async () => {
+	test("A SimpleTimer instance must have its promise resolve to SimpleTimer.CANCELLED when its cancel(...) method is called and it is in the RUNNING state", async () => {
 		expect.assertions(2);
 		let simpleTimerInstance = new SimpleTimer(200);
 		let simpleTimerResult = simpleTimerInstance.start();
@@ -156,7 +156,7 @@ describe("Simple Timer tests", () => {
 		expect(await simpleTimerResult).toBe(SimpleTimer.CANCELLED);
 	});
 
-	test("A SimpleTimer instance should be in the CANCELLED state after its cancel(...) instance method is called", async () => {
+	test("A SimpleTimer instance must be in the CANCELLED state after its cancel(...) instance method is called", async () => {
 		expect.assertions(1);
 		let simpleTimerInstance = new SimpleTimer(200);
 		simpleTimerInstance.start();
@@ -165,7 +165,7 @@ describe("Simple Timer tests", () => {
 		expect(simpleTimerInstance.state).toBe(SimpleTimer.CANCELLED);
 	});
 
-	test("A SimpleTimer instance call to its start(...) method should throw an ERROR_SIMPLE_TIMER_NOT_IN_SET_OR_RUNNING_STATES when it is in the CANCELLED state", async () => {
+	test("A SimpleTimer instance call to its start(...) method must throw an ERROR_SIMPLE_TIMER_NOT_IN_SET_OR_RUNNING_STATES when it is in the CANCELLED state", async () => {
 		expect.assertions(2);
 		let simpleTimerInstance = new SimpleTimer(200);
 		simpleTimerInstance.start();
@@ -179,7 +179,7 @@ describe("Simple Timer tests", () => {
 		}
 	});
 
-	test("A SimpleTimer instance call to its cancel(...) method should throw an ERROR_SIMPLE_TIMER_NOT_RUNNING when it is in the SET state", () => {
+	test("A SimpleTimer instance call to its cancel(...) method must throw an ERROR_SIMPLE_TIMER_NOT_RUNNING when it is in the SET state", () => {
 		expect.assertions(2);
 		let simpleTimerInstance = new SimpleTimer(200);
 		try {
@@ -190,7 +190,7 @@ describe("Simple Timer tests", () => {
 		}
 	});
 
-	test("A SimpleTimer instance call to its cancel(...) method should throw an ERROR_SIMPLE_TIMER_NOT_RUNNING when it is in the DONE state", async () => {
+	test("A SimpleTimer instance call to its cancel(...) method must throw an ERROR_SIMPLE_TIMER_NOT_RUNNING when it is in the DONE state", async () => {
 		expect.assertions(2);
 		let simpleTimerInstance = new SimpleTimer(200);
 		await simpleTimerInstance.start();
@@ -202,7 +202,7 @@ describe("Simple Timer tests", () => {
 		}
 	});
 
-	test("A SimpleTimer instance call to its cancel(...) method should throw an ERROR_SIMPLE_TIMER_NOT_RUNNING when it is in the CANCELLED state", async () => {
+	test("A SimpleTimer instance call to its cancel(...) method must throw an ERROR_SIMPLE_TIMER_NOT_RUNNING when it is in the CANCELLED state", async () => {
 		expect.assertions(2);
 		let simpleTimerInstance = new SimpleTimer(200);
 		simpleTimerInstance.start();
