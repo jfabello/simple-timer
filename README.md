@@ -16,6 +16,7 @@ This module provides a simple, promise-based timer for Node.js. It allows the cr
 	- [Static Properties](#static-properties)
 	- [Instance Properties](#instance-properties)
 	- [Instance Methods](#instance-methods)
+- [Testing](#testing)
 - [Contributing](#contributing)
 - [License](#license)
 
