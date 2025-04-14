@@ -19,7 +19,7 @@
 		"url": "https://github.com/jfabello/simple-timer.git"
 	},
 	"scripts": {
-		"test": "jest --watchAll --coverage"
+		"test": "node --experimental-vm-modules ./node_modules/.bin/jest --watchAll --coverage"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.24.0",
