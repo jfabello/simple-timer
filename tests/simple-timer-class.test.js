@@ -16,7 +16,8 @@ describe("Simple Timer tests", () => {
 	test("An attempt to create a SimpleTimer instance must throw an ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID error when the timeout argument is undefined", () => {
 		expect.assertions(1);
 		try {
-			// @ts-ignore
+			// @ts-expect-error
+			// eslint-disable-next-line no-unused-vars
 			let simpleTimerInstance = new SimpleTimer();
 		} catch (error) {
 			expect(error).toBeInstanceOf(SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID);
@@ -26,24 +27,28 @@ describe("Simple Timer tests", () => {
 	test("An attempt to create a SimpleTimer instance must throw an ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID error when the timeout argument is not an integer", () => {
 		expect.assertions(4);
 		try {
-			// @ts-ignore
+			// @ts-expect-error
+			// eslint-disable-next-line no-unused-vars
 			let simpleTimerInstance = new SimpleTimer("200");
 		} catch (error) {
 			expect(error).toBeInstanceOf(SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID);
 		}
 		try {
-			// @ts-ignore
+			// @ts-expect-error
+			// eslint-disable-next-line no-unused-vars
 			let simpleTimerInstance = new SimpleTimer([200]);
 		} catch (error) {
 			expect(error).toBeInstanceOf(SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID);
 		}
 		try {
-			// @ts-ignore
+			// @ts-expect-error
+			// eslint-disable-next-line no-unused-vars
 			let simpleTimerInstance = new SimpleTimer({ timeout: 200 });
 		} catch (error) {
 			expect(error).toBeInstanceOf(SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID);
 		}
 		try {
+			// eslint-disable-next-line no-unused-vars
 			let simpleTimerInstance = new SimpleTimer(3.14);
 		} catch (error) {
 			expect(error).toBeInstanceOf(SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID);
@@ -53,11 +58,13 @@ describe("Simple Timer tests", () => {
 	test("An attempt to create a SimpleTimer instance must throw an ERROR_SIMPLE_TIMER_TIMEOUT_OUT_OF_BOUNDS error when the timeout argument is not a positive integer greater than zero", () => {
 		expect.assertions(2);
 		try {
+			// eslint-disable-next-line no-unused-vars
 			let simpleTimerInstance = new SimpleTimer(0);
 		} catch (error) {
 			expect(error).toBeInstanceOf(SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_OUT_OF_BOUNDS);
 		}
 		try {
+			// eslint-disable-next-line no-unused-vars
 			let simpleTimerInstance = new SimpleTimer(-200);
 		} catch (error) {
 			expect(error).toBeInstanceOf(SimpleTimer.errors.ERROR_SIMPLE_TIMER_TIMEOUT_OUT_OF_BOUNDS);

@@ -125,6 +125,7 @@ class SimpleTimer {
 			throw new errors.ERROR_SIMPLE_TIMER_NOT_IN_SET_OR_RUNNING_STATES();
 		}
 
+		// eslint-disable-next-line no-unused-vars
 		this.#timerPromise = new Promise((resolve, reject) => {
 			this.#timerEmitter.once("timerup", () => {
 				this.#timerHandle = null;
