@@ -24,3 +24,6 @@ package-lock.json
 /tests/
 *.test.js
 jest.config.js
+
+# Ignore the ESLint configuration files
+eslint.config.js

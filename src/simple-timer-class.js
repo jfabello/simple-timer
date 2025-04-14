@@ -9,10 +9,10 @@
 "use strict";
 
 // Module imports
-const { EventEmitter } = require("node:events");
+import { EventEmitter } from "node:events";
 
 // Errors
-const errors = require("./simple-timer-errors.js");
+import { errors } from "./simple-timer-errors.js";
 
 /**
  * A simple timer class that provides a way to set, start, and cancel a timer with a specified timeout.
@@ -162,4 +162,4 @@ class SimpleTimer {
 	}
 }
 
-module.exports = { SimpleTimer };
+export { SimpleTimer };

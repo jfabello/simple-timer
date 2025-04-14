@@ -9,8 +9,8 @@
 "use strict";
 
 // Module imports
-const { describe, expect, test } = require("@jest/globals");
-const { SimpleTimer } = require("../src/simple-timer-class.js");
+import { describe, expect, test } from "@jest/globals";
+import { SimpleTimer } from "../src/simple-timer-class.js";
 
 describe("Simple Timer tests", () => {
 	test("An attempt to create a SimpleTimer instance must throw an ERROR_SIMPLE_TIMER_TIMEOUT_TYPE_INVALID error when the timeout argument is undefined", () => {
