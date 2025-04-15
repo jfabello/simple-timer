@@ -22,6 +22,10 @@ This module provides a simple, promise-based timer for Node.js. It allows the cr
 
 ## What is New
 
+### Version 3.0.1
+
+- Updated the minimum Node.js engine required to version 20.
+
 ### Version 3.0.0
 
 - Simple Timer is now an ES6 module. This provides better support for tools like ESLint 9 and a cleaner code syntax.
