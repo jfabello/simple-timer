@@ -22,6 +22,10 @@ This module provides a simple, promise-based timer for Node.js. It allows the cr
 
 ## What is New
 
+### Version 3.0.0
+
+- Simple Timer is now an ES6 module. This provides better support for tools like ESLint 9 and a cleaner code syntax.
+
 ### Version 2.0.1
 
 - Fixed a bug in `package.json` where the `main` field was pointing to the wrong file.
@@ -54,7 +58,7 @@ Here are some examples:
 ### Starting a Timer
 
 ```javascript
-const { SimpleTimer } = require('@jfabello/simple-timer');
+import { SimpleTimer } from "@jfabello/simple-timer";
 
 async function someAsyncFunction() {
     // Creates a new SimpleTimer instance with a 2000 ms timeout
@@ -71,7 +75,7 @@ someAsyncFunction();
 ### Cancelling a Timer
 
 ```javascript
-const { SimpleTimer } = require('@jfabello/simple-timer');
+import { SimpleTimer } from "@jfabello/simple-timer";
 
 async function someAsyncFunction() {
     // Creates a new SimpleTimer instance with a 2000 ms timeout
@@ -94,7 +98,7 @@ someAsyncFunction();
 ### Using Timer States
 
 ```javascript
-const { SimpleTimer } = require('@jfabello/simple-timer');
+import { SimpleTimer } from "@jfabello/simple-timer";
 
 async function someAsyncFunction() {
 	// Creates a new SimpleTimer instance with a 2000 ms timeout
