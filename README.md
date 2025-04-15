@@ -28,7 +28,7 @@ This module provides a simple, promise-based timer for Node.js. It allows the cr
 
 ### Version 3.0.0
 
-- Simple Timer is now an ES6 module. This provides better support for tools like ESLint 9 and a cleaner code syntax.
+- `SimpleTimer` is now an ES6 module. This provides better support for tools like ESLint 9 and a cleaner code syntax.
 
 ### Version 2.0.1
 
