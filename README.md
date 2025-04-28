@@ -6,21 +6,34 @@ This module provides a simple, promise-based timer for Node.js. It allows the cr
 
 ## Table of Contents
 - [What is New](#what-is-new)
+  - [Version 3.0.2](#version-302)
+  - [Version 3.0.1](#version-301)
+  - [Version 3.0.0](#version-300)
+  - [Version 2.0.1](#version-201)
+  - [Version 2.0.0](#version-200)
+  - [Version 1.0.1](#version-101)
 - [Installation](#installation)
 - [Usage](#usage)
-	- [Starting a Timer](#starting-a-timer)
-	- [Cancelling a Timer](#cancelling-a-timer)
-	- [Using Timer States](#using-timer-states)
+  - [Starting a Timer](#starting-a-timer)
+  - [Cancelling a Timer](#cancelling-a-timer)
+  - [Using Timer States](#using-timer-states)
 - [Timer States](#timer-states)
 - [The `SimpleTimer` Class](#the-simpletimer-class)
-	- [Static Properties](#static-properties)
-	- [Instance Properties](#instance-properties)
-	- [Instance Methods](#instance-methods)
+  - [Static Properties](#static-properties)
+  - [Instance Properties](#instance-properties)
+  - [Instance Methods](#instance-methods)
+    - [`constructor(timeout)`](#constructortimeout)
+    - [`start()`](#start)
+    - [`cancel()`](#cancel)
 - [Testing](#testing)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## What is New
+
+### Version 3.0.2
+
+- Updated documentation.
 
 ### Version 3.0.1
 
@@ -64,16 +77,12 @@ Here are some examples:
 ```javascript
 import { SimpleTimer } from "@jfabello/simple-timer";
 
-async function someAsyncFunction() {
-    // Creates a new SimpleTimer instance with a 2000 ms timeout
-    let timer = new SimpleTimer(2000);
+// Creates a new SimpleTimer instance with a 2000 ms timeout
+let timer = new SimpleTimer(2000);
 
-	// Start the timer and wait for it to finish
-    await timer.start();
-	console.log("Timer done!");
-}
-
-someAsyncFunction();
+// Start the timer and wait for it to finish
+await timer.start();
+console.log("Timer done!");
 ```
 
 ### Cancelling a Timer
@@ -81,22 +90,18 @@ someAsyncFunction();
 ```javascript
 import { SimpleTimer } from "@jfabello/simple-timer";
 
-async function someAsyncFunction() {
-    // Creates a new SimpleTimer instance with a 2000 ms timeout
-    let timer = new SimpleTimer(2000);
+// Creates a new SimpleTimer instance with a 2000 ms timeout
+let timer = new SimpleTimer(2000);
 
-	// Start the timer and wait for it to finish
-    let timerPromise = timer.start();
+// Start the timer and wait for it to finish
+let timerPromise = timer.start();
 
-	// Cancel the timer after 1000 ms
-	setTimeout(async () => {
-		timer.cancel();
-		await timerPromise;
-		console.log("Timer cancelled!");
-	}, 1000);
-}
-
-someAsyncFunction();
+// Cancel the timer after 1000 ms
+setTimeout(async () => {
+	timer.cancel();
+	await timerPromise;
+	console.log("Timer cancelled!");
+}, 1000);
 ```
 
 ### Using Timer States
@@ -104,31 +109,27 @@ someAsyncFunction();
 ```javascript
 import { SimpleTimer } from "@jfabello/simple-timer";
 
-async function someAsyncFunction() {
-	// Creates a new SimpleTimer instance with a 2000 ms timeout
-	let timer = new SimpleTimer(2000);
+// Creates a new SimpleTimer instance with a 2000 ms timeout
+let timer = new SimpleTimer(2000);
 
-	// Start the timer and wait for it to finish
-	let timerPromise = timer.start();
+// Start the timer and wait for it to finish
+let timerPromise = timer.start();
 
-	// Report the state of the timer every 500 ms
-	let interval = setInterval(() => {
-		console.log(`Timer state: ${timer.state.toString()}`);
-		if (timer.state === SimpleTimer.DONE || timer.state === SimpleTimer.CANCELLED) {
-			clearInterval(interval);
-			clearTimeout(timeout);
-		}
-	}, 500);
+// Report the state of the timer every 500 ms
+let interval = setInterval(() => {
+	console.log(`Timer state: ${timer.state.toString()}`);
+	if (timer.state === SimpleTimer.DONE || timer.state === SimpleTimer.CANCELLED) {
+		clearInterval(interval);
+		clearTimeout(timeout);
+	}
+}, 500);
 
-	// Cancel the timer after 1000 ms
-	let timeout = setTimeout(async () => {
-		timer.cancel();
-		await timerPromise;
-		console.log("Timer cancelled!");
-	}, 1500);
-}
-
-someAsyncFunction();
+// Cancel the timer after 1000 ms
+let timeout = setTimeout(async () => {
+	timer.cancel();
+	await timerPromise;
+	console.log("Timer cancelled!");
+}, 1500);
 ```
 
 The code above should output the following to the console:
